@@ -1,4 +1,4 @@
-package com.company.orders.controller;
+package com.company.orders.repository;
 
 import com.company.orders.entity.Usuario;
 import org.springframework.data.mongodb.repository.MongoRepository;

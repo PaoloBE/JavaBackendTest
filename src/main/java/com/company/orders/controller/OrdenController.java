@@ -5,6 +5,10 @@ import com.company.orders.entity.Item;
 import com.company.orders.entity.Orden;
 import com.company.orders.service.OrdenService;
 import com.company.orders.utils.RespGenerica;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -14,6 +18,7 @@ import java.util.List;
 @RequestMapping("api/orden")
 public class OrdenController {
     private final OrdenService service;
+    private final String FIELD = "id";
 
     public OrdenController(OrdenService service) {
         this.service = service;
@@ -30,7 +35,19 @@ public class OrdenController {
     }
 
     @GetMapping("/all")
-    public RespGenerica<List<Orden>> listarOrdenes() {
-        return  this.service.listarOrdenes();
+    public RespGenerica<List<Orden>> listarOrdenes(@RequestParam(defaultValue = "0") int page,
+                                                   @RequestParam(defaultValue = "3") int size,
+                                                   @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection) {
+        Pageable pageable = PageRequest.of(page, size, sortDirection, FIELD);
+        return this.service.listarOrdenes(pageable);
+    }
+
+    @GetMapping("/usuario")
+    public RespGenerica<List<Orden>> listarPorUsuario(@RequestParam @Validated String value,
+                                                      @RequestParam(defaultValue = "0") int page,
+                                                      @RequestParam(defaultValue = "3") int size,
+                                                      @RequestParam(defaultValue = "DESC") Sort.Direction sortDirection) {
+        Pageable pageable = PageRequest.of(page, size, sortDirection, FIELD);
+        return this.service.listarPorUsuario(value, pageable);
     }
 }

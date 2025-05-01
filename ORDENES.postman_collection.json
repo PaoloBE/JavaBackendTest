@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "71d339db-7ca6-4b50-bec0-f28687b0db30",
+		"name": "ORDENES",
+		"description": "Contenido:\n\n\\-LISTADO TODO: Listado órdenes sin filtro\n\n\\-LISTADO PAGINADO: Listado con valores de paginación\n\n\\-LISTADO USUARIO: Listado por usuario sin paginación\n\n\\-LISTADO USUARIO PAGINADO: Listado por usuario con valores de paginación\n\n\\-CREAR ORDEN: Crear una orden",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1263618"
+	},
+	"item": [
+		{
+			"name": "LISTADO TODO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/orden/all",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orden",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO PAGINADO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/orden/all?page=1&size=2",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orden",
+						"all"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO USUARIO PAGINADO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/orden/usuario?page=1&size=2&value=paoloBudiel",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orden",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "size",
+							"value": "2"
+						},
+						{
+							"key": "value",
+							"value": "paoloBudiel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LISTADO USUARIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/orden/usuario?value=nombreApe",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orden",
+						"usuario"
+					],
+					"query": [
+						{
+							"key": "value",
+							"value": "nombreApe"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREAR ORDEN",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n        {\r\n            \"id_producto\": \"001\",\r\n            \"cantidad\": 1,\r\n            \"precio_unitario\": 16\r\n        },\r\n        {\r\n            \"id_producto\": \"004\",\r\n            \"cantidad\": 2,\r\n            \"precio_unitario\": 6.5\r\n        }\r\n    ],\r\n    \"id_usuario\": \"paoloBudiel\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/orden",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"orden"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
