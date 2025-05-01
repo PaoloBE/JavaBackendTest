@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("api/orden")
 public class OrdenController {
     private final OrdenService service;
-    private final String FIELD = "id";
+    private String FIELD = "id";
 
     public OrdenController(OrdenService service) {
         this.service = service;

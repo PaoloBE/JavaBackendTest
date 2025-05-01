@@ -31,3 +31,6 @@ En caso de querer desactivar kafka cambiar la siguiente property al valor 0 así
 ---
 Además cuenta con un archivo collection de postman para probar los endpoints
 
+Para correr el projecto correr en consola de comandos lo siguiente:  
+>mvn spring-boot:run
+> 
